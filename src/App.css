@@ -1,3 +1,4 @@
+
 body {
   font-family: "Arial", sans-serif;
   display: flex;
@@ -5,23 +6,28 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background: linear-gradient(180deg, #fbfbff, #a5a5ff);
 }
 
 h2 {
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .row {
   display: flex;
 }
 
+
 .cell {
   width: 50px;
   height: 50px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 50%; /* Add this line to make the squares circular */
+  margin: 3px;
+  background-color: white;
 }
 
 
@@ -32,3 +38,33 @@ h2 {
   flex-direction: column;
   align-items: center;
 }
+
+.arka{
+  transform: scale(1);
+  border: 2px solid black;
+  box-shadow: 10px 10px;
+  background-color: gray;
+  opacity: 0.8;
+  border-radius: 5%;
+}
+
+
+:root {
+  --board-color: gray;
+  --cell-color: blue;
+}
+
+.arka {
+  background-color: var(--board-color);
+}
+
+
+
+.red-cell {
+  background-color: var(--cell-color-red); /* istediğiniz kırmızı renk */
+}
+
+.yellow-cell {
+  background-color: var(--cell-color-yellow); /* istediğiniz sarı renk */
+}
+

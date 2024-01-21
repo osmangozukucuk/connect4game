@@ -1,12 +1,17 @@
+// App.js
 import React from "react";
-import ConnectFour from "./ConnectFour"; // Ensure this matches the actual name in ConnectFour.js
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StartPage from "./StartPage";
+import ConnectFour from "./ConnectFour";
 
 const App = () => {
   return (
-    <div className="container">
-      <ConnectFour />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/ConnectFour" element={<ConnectFour />} />
+      </Routes>
+    </Router>
   );
 };
 

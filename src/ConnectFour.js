@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 const ROWS = 6;
 const COLUMNS = 7;
 
-const initialBoard = Array.from({ length: ROWS }, () =>
-  Array(COLUMNS).fill(null)
-);
+const initialBoard = Array.from({ length: ROWS }, () => Array(COLUMNS).fill(null));
 
 const ConnectFour = () => {
   const [board, setBoard] = useState(initialBoard);
   const [currentPlayer, setCurrentPlayer] = useState("red");
   const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    const userColor = localStorage.getItem("userColor") || "blue";
+    const boardColor = localStorage.getItem("boardColor") || "gray";
+    const yellowColor = localStorage.getItem("yellowcolor") || "yellow";
+
+    document.documentElement.style.setProperty("--board-color", boardColor);
+    document.documentElement.style.setProperty("--cell-color-red", userColor);
+    document.documentElement.style.setProperty("--cell-color-yellow", yellowColor);
+  }, []);
 
   const dropDisc = (column) => {
     if (winner || board[0][column]) return;
@@ -32,6 +41,8 @@ const ConnectFour = () => {
   const switchPlayer = () => {
     setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
   };
+
+
 
   const checkWinner = (board) => {
     // Check for a winner horizontally, vertically, and diagonally
@@ -116,28 +127,29 @@ const ConnectFour = () => {
 
   const renderMessage = () => {
     if (winner) {
-      return <p>{winner === "red" ? "You win!" : "You lose!"}</p>;
+      return <p>{winner === "red" ? "You lose!" : "You win!"}</p>;
     } else {
       return <p>{currentPlayer === "red" ? "Your turn" : "Computer's turn"}</p>;
     }
   };
-
   return (
     <div className="container">
       <h2>Connect Four</h2>
+      <Link to="/">Go to </Link>
       {renderMessage()}
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="row">
-          {row.map((cell, colIndex) => (
-            <div
-              key={colIndex}
-              className="cell"
-              onClick={() => currentPlayer === "red" && dropDisc(colIndex)}
-              style={{ backgroundColor: cell }}
-            ></div>
-          ))}
-        </div>
-      ))}
+      <div className="arka">
+        {board.map((row, rowIndex) => (
+          <div key={rowIndex} className="row">
+            {row.map((cell, colIndex) => (
+              <div
+                key={colIndex}
+                className={`cell ${cell === 'red' ? 'red-cell' : (cell === 'yellow' ? 'yellow-cell' : '')}`}
+                onClick={() => currentPlayer === "red" && dropDisc(colIndex)}
+              ></div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
