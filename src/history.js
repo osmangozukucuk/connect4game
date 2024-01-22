@@ -17,33 +17,15 @@ const History = () => {
     };
   }, []);
 
-  const renderWinner = (winner) => {
-    if (winner === "red") {
-      return "Computer";
-    } else if (winner === "yellow") {
-      return localStorage.getItem("username") || "";
-    } else {
-      return "";
-    }
-  };
-
-  const renderWinner2 = (winner) => {
-    if (winner === "yellow") {
-      return "Computer";
-    } else if (winner === "red") {
-      return localStorage.getItem("username") || "";
-    } else {
-      return "";
-    }
-  };
-
   const renderGameHistory = () => {
-    return gameHistory.slice(0, 10).map((game, index) => (
+    const lastTenGames = gameHistory.slice(-10); // Get the last 10 games
+
+    return lastTenGames.map((game, index) => (
       <div key={index}>
         <p>Game {index + 1}</p>
-        <p>Winner: {renderWinner2(game.winner)}</p>
-        <p>Loser: {renderWinner(game.winner)}</p>
+        <p>Player: {game.playerName}</p>
         <p>Game Name: {game.gameName}</p>
+        <p>Winner: {game.winnerName}</p>
         <hr />
       </div>
     ));

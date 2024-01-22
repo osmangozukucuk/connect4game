@@ -35,18 +35,14 @@ const StartPage = () => {
       return;
     }
   
-    // Clear the game history
-    localStorage.removeItem("gameHistory");
+    // Clear the game history only if it doesn't exist
+    if (!localStorage.getItem("gameHistory")) {
+      localStorage.setItem("gameHistory", JSON.stringify([]));
+    }
   
-  
-    // Eğer username boş değilse ve additionalInput doluysa oyun sayfasına yönlendir
     window.location.href = "/ConnectFour";
   };
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-    setAlertShown(false); // Kullanıcı adı değiştiğinde alertShown'u sıfırla
-  };
+  
 
   return (
     <div className="allboard">

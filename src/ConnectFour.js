@@ -156,31 +156,22 @@ const ConnectFour = () => {
       window.location.reload();
     }, 1);
   };
-  useEffect(() => {
-    if (winner || isTie) {
-      setGameOver(true);
   
-      // Oyuncunun ismini, oyunun ismini ve kazananın ismini localStorage'a kaydet
-      const playerName = localStorage.getItem("username") || "Player";
-      const gameName = GameName || "Connect Four";
-      const winnerName = winner === "red" ? "Computer" : playerName;
-  
-      // Oyun geçmişini al ve ekle
-      const gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
-      const newGame = { playerName, gameName, winnerName };
-      gameHistory.push(newGame);
-  
-      // LocalStorage'a yeni oyun geçmişini kaydet
-      localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
-  
-      // Konsola yazdır
-      console.log("Oyun bitti!");
-      console.log("Oyuncu ismi:", playerName);
-      console.log("Oyun ismi:", gameName);
-      console.log("Kazanan ismi:", winnerName);
-      console.log("Yeni oyun geçmişi:", gameHistory);
-    }
-  }, [winner, isTie]);
+useEffect(() => {
+  if (winner || isTie) {
+    setGameOver(true);
+
+    const playerName = localStorage.getItem("username") || "Player";
+    const gameName = GameName || "Connect Four";
+    const winnerName = winner === "red" ? "Computer" : playerName;
+
+    const gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
+    const newGame = { playerName, gameName, winnerName };
+    gameHistory.push(newGame);
+
+    localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
+  }
+}, [winner, isTie]);
 
   const renderMessage = () => {
     if (gameOver) {
