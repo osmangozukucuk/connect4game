@@ -1,0 +1,47 @@
+
+   h2{
+    padding: 10;
+    scale: 2;
+
+   }
+.allboard{
+    box-shadow: 5px 5px 52px 10px grey;
+
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    height: auto;
+    width: auto;
+    background: white;
+    padding: 7px;
+    border: 3px solid rgb(238, 253, 255);
+    justify-content: center;
+    align-items: center;
+    scale: 1.5;
+    
+    
+  }
+ 
+
+ 
+a {
+    background-color: rgb(191, 235, 255);
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 4px;
+    color: rgb(80, 80, 80);
+    text-decoration: none;
+    
+    border: 3px;
+    border-radius: 8px;
+}
+input{
+    padding: 5px;
+}
+label{
+    margin: 10px;
+}

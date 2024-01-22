@@ -1,29 +1,58 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { Link } from "react-router-dom";
+import "./App.css";
+import "./ConnectFour.css";
+
 
 const ROWS = 6;
 const COLUMNS = 7;
 
 const initialBoard = Array.from({ length: ROWS }, () => Array(COLUMNS).fill(null));
 
+
 const ConnectFour = () => {
+  const [GameName, setGameName] = useState(localStorage.getItem("GameName") || "");
   const [board, setBoard] = useState(initialBoard);
   const [currentPlayer, setCurrentPlayer] = useState("red");
   const [winner, setWinner] = useState(null);
+  const [isTie, setIsTie] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     const userColor = localStorage.getItem("userColor") || "blue";
     const boardColor = localStorage.getItem("boardColor") || "gray";
     const yellowColor = localStorage.getItem("yellowcolor") || "yellow";
 
+    
     document.documentElement.style.setProperty("--board-color", boardColor);
     document.documentElement.style.setProperty("--cell-color-red", userColor);
     document.documentElement.style.setProperty("--cell-color-yellow", yellowColor);
   }, []);
 
+  useEffect(() => {
+    checkWinner(board);
+  }, [board, currentPlayer]);
+
+  useEffect(() => {
+    if (isTie) {
+      const delay = setTimeout(() => {
+        window.location.reload();
+      }, 100);
+      return () => clearTimeout(delay);
+    }
+  }, [isTie]);
+
+  useEffect(() => {
+    if (currentPlayer === "yellow" && !isTie) {
+      const delay = setTimeout(() => {
+        computerMove();
+      }, 500);
+      return () => clearTimeout(delay);
+    }
+  }, [currentPlayer, board, isTie]);
+
   const dropDisc = (column) => {
-    if (winner || board[0][column]) return;
+    if (winner || board[0][column] || isTie) return;
 
     const newBoard = [...board];
     for (let row = ROWS - 1; row >= 0; row--) {
@@ -36,60 +65,62 @@ const ConnectFour = () => {
     setBoard(newBoard);
     checkWinner(newBoard);
     switchPlayer();
+    checkTie(newBoard);
   };
 
   const switchPlayer = () => {
     setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
   };
 
-
-
-  const checkWinner = (board) => {
-    // Check for a winner horizontally, vertically, and diagonally
+  const checkWinner = (currentBoard) => {
     for (let row = 0; row < ROWS; row++) {
       for (let col = 0; col < COLUMNS; col++) {
-        if (board[row][col]) {
-          // Check horizontally
+        if (currentBoard[row][col]) {
           if (col <= COLUMNS - 4) {
             if (
-              board[row][col] === board[row][col + 1] &&
-              board[row][col] === board[row][col + 2] &&
-              board[row][col] === board[row][col + 3]
+              currentBoard[row][col] === currentBoard[row][col + 1] &&
+              currentBoard[row][col] === currentBoard[row][col + 2] &&
+              currentBoard[row][col] === currentBoard[row][col + 3]
             ) {
               setWinner(currentPlayer);
+              localStorage.setItem("winner", currentPlayer);
+              localStorage.setItem("gameName", GameName);
               return;
             }
           }
-          // Check vertically
           if (row <= ROWS - 4) {
             if (
-              board[row][col] === board[row + 1][col] &&
-              board[row][col] === board[row + 2][col] &&
-              board[row][col] === board[row + 3][col]
+              currentBoard[row][col] === currentBoard[row + 1][col] &&
+              currentBoard[row][col] === currentBoard[row + 2][col] &&
+              currentBoard[row][col] === currentBoard[row + 3][col]
             ) {
               setWinner(currentPlayer);
+              localStorage.setItem("winner", currentPlayer);
+              localStorage.setItem("gameName", GameName);
               return;
             }
           }
-          // Check diagonally (from top-left to bottom-right)
           if (col <= COLUMNS - 4 && row <= ROWS - 4) {
             if (
-              board[row][col] === board[row + 1][col + 1] &&
-              board[row][col] === board[row + 2][col + 2] &&
-              board[row][col] === board[row + 3][col + 3]
+              currentBoard[row][col] === currentBoard[row + 1][col + 1] &&
+              currentBoard[row][col] === currentBoard[row + 2][col + 2] &&
+              currentBoard[row][col] === currentBoard[row + 3][col + 3]
             ) {
               setWinner(currentPlayer);
+              localStorage.setItem("winner", currentPlayer);
+              localStorage.setItem("gameName", GameName);
               return;
             }
           }
-          // Check diagonally (from top-right to bottom-left)
           if (col >= 3 && row <= ROWS - 4) {
             if (
-              board[row][col] === board[row + 1][col - 1] &&
-              board[row][col] === board[row + 2][col - 2] &&
-              board[row][col] === board[row + 3][col - 3]
+              currentBoard[row][col] === currentBoard[row + 1][col - 1] &&
+              currentBoard[row][col] === currentBoard[row + 2][col - 2] &&
+              currentBoard[row][col] === currentBoard[row + 3][col - 3]
             ) {
               setWinner(currentPlayer);
+              localStorage.setItem("winner", currentPlayer);
+              localStorage.setItem("gameName", GameName);
               return;
             }
           }
@@ -98,18 +129,13 @@ const ConnectFour = () => {
     }
   };
 
-  useEffect(() => {
-    if (currentPlayer === "yellow") {
-      const delay = setTimeout(() => {
-        computerMove();
-      }, 500);
-      return () => clearTimeout(delay);
+  const checkTie = (currentBoard) => {
+    const isTie = currentBoard.every((row) => row.every((cell) => cell));
+    if (isTie) {
+      setIsTie(true);
+      localStorage.setItem("tie", "true");
     }
-  }, [currentPlayer, board]);
-
-  useEffect(() => {
-    checkWinner(board);
-  }, [board, currentPlayer]);
+  };
 
   const computerMove = () => {
     const validMoves = [];
@@ -125,17 +151,65 @@ const ConnectFour = () => {
     }
   };
 
+  const handleLinkClick = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
+  };
+  useEffect(() => {
+    if (winner || isTie) {
+      setGameOver(true);
+  
+      // Oyuncunun ismini, oyunun ismini ve kazananın ismini localStorage'a kaydet
+      const playerName = localStorage.getItem("username") || "Player";
+      const gameName = GameName || "Connect Four";
+      const winnerName = winner === "red" ? "Computer" : playerName;
+  
+      // Oyun geçmişini al ve ekle
+      const gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
+      const newGame = { playerName, gameName, winnerName };
+      gameHistory.push(newGame);
+  
+      // LocalStorage'a yeni oyun geçmişini kaydet
+      localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
+  
+      // Konsola yazdır
+      console.log("Oyun bitti!");
+      console.log("Oyuncu ismi:", playerName);
+      console.log("Oyun ismi:", gameName);
+      console.log("Kazanan ismi:", winnerName);
+      console.log("Yeni oyun geçmişi:", gameHistory);
+    }
+  }, [winner, isTie]);
+
   const renderMessage = () => {
-    if (winner) {
-      return <p>{winner === "red" ? "You lose!" : "You win!"}</p>;
+    if (gameOver) {
+      return (
+        <p>
+          {winner
+            ? winner === "red"
+              ? "You lose!"
+              : "You win!"
+            : "It's a tie!"}{" "}
+          Game Over!
+        </p>
+      );
     } else {
-      return <p>{currentPlayer === "red" ? "Your turn" : "Computer's turn"}</p>;
+      return (
+        <p>
+          {currentPlayer === "red"
+            ? `Your turn, ${localStorage.getItem("username") || "Player"}`
+            : "Computer's turn"}
+        </p>
+      );
     }
   };
   return (
     <div className="container">
-      <h2>Connect Four</h2>
-      <Link to="/">Go to </Link>
+      <h2>{GameName || "Connect Four"}</h2>
+      <Link to="/" onClick={handleLinkClick}>
+        Go to Home
+      </Link>
       {renderMessage()}
       <div className="arka">
         {board.map((row, rowIndex) => (
@@ -143,7 +217,7 @@ const ConnectFour = () => {
             {row.map((cell, colIndex) => (
               <div
                 key={colIndex}
-                className={`cell ${cell === 'red' ? 'red-cell' : (cell === 'yellow' ? 'yellow-cell' : '')}`}
+                className={`cell ${cell === "red" ? "red-cell" : cell === "yellow" ? "yellow-cell" : ""}`}
                 onClick={() => currentPlayer === "red" && dropDisc(colIndex)}
               ></div>
             ))}
