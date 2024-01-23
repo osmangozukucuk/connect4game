@@ -45,10 +45,10 @@ By the way i did this game for my education😉
 
 ##### Note - my-first-project - you can change this with your project name.
 
-for more guide ↓
+<div><h2>for more guide ↓</h2></div>
 
 
-<h2><details></h2>
+<details>
 
 
 # Reactjs Installation
