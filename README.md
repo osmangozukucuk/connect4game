@@ -213,7 +213,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   <summary>
     <h2><code>[Click to show]</code>  the path I followed / and more info </h2>
   </summary>
-
+<h3>
   1.I asked to chatgpt to make my game screen page
 
   2.I explained the mechanics
@@ -237,7 +237,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   11.After completing these pages i started to doing styles and i getted a lot of help from chatgpt
   
   12.and finally I wrote this documentation.
-  
+  </h3>
 </details>
 
 <div align="center"><h4>Thank you for your attention 🙏</h4></div>
