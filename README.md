@@ -1,5 +1,5 @@
 <div align="center">
-  <img border-radius="50%" width="600" src="public/ubn.jpeg" alt="Spotube Logo">
+  <img border-radius="%50" width="600" src="public/ubn.jpeg" alt="Spotube Logo">
 
 An open source, connect four game<br />
 playing with computer<br />
