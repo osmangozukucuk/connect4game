@@ -213,24 +213,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 └── package.json
 ```
 
-## Contributing
 
 <details>
   <summary>
     <h2><code>[Click to show]</code> 🙏 the path I followed / and more info 🙏</h2>
   </summary>
-  1-I asked to chatgpt to make my game screen page
-  2-I explained the mechanics
-  3-I explained the cells, colors and wanted to follow mechanics
-  4-I wanted to add some functions like: tie,win,lose and asked to chatgpt to make them
-  5-I worked on it a bit and finished it
-  6-I asked to make transition between pages to chatgpt
-  7-I created my game list page and game creation page
-  8-I started to doing game creation page i used local.storage for the choosing colors and printing the names
-  9-After finishing the game creation page i asked to the chatgpt to do saving win, lose, tie functions to local.storage
-  10-Then started the game list page i used local.storage again
-  11-After completing these pages i started to doing styles and i getted a lot of help from chatgpt
-  12-and finally I wrote this documentation.
+  1.I asked to chatgpt to make my game screen page
+
+  2.I explained the mechanics
+
+  3.I explained the cells, colors and wanted to follow mechanics
+
+  4.I wanted to add some functions like: tie,win,lose and asked to chatgpt to make them
+  
+  5.I worked on it a bit and finished it
+  
+  6.I asked to make transition between pages to chatgpt
+  
+  7.I created my game list page and game creation page
+  
+  8.I started to doing game creation page i used local.storage for the choosing colors and printing the names
+  
+  9.After finishing the game creation page i asked to the chatgpt to do saving win, lose, tie functions to local.storage
+  
+  10.Then started the game list page i used local.storage again
+  
+  11.After completing these pages i started to doing styles and i getted a lot of help from chatgpt
+  
+  12.and finally I wrote this documentation.
+  
 
 </details>
 
