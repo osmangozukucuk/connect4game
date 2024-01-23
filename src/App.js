@@ -1,9 +1,9 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import StartPage from "./StartPage";
-import ConnectFour from "./ConnectFour";
-import HistoryPage from "./history";
+import StartPage from "./GameCretion/StartPage";
+import ConnectFour from "./GameScreen/ConnectFour";
+import HistoryPage from "./ListOfLastGames/history";
 
 
 const App = () => {
