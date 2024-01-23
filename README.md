@@ -48,7 +48,7 @@ By the way i did this game for my education😉
 for more guide ↓
 
 
-<details>
+<h2><details></h2>
 
 
 # Reactjs Installation
@@ -216,8 +216,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <details>
   <summary>
-    <h2><code>[Click to show]</code> 🙏 the path I followed / and more info 🙏</h2>
+    <h2><code>[Click to show]</code>  the path I followed / and more info </h2>
   </summary>
+
   1.I asked to chatgpt to make my game screen page
 
   2.I explained the mechanics
@@ -242,7 +243,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   
   12.and finally I wrote this documentation.
   
-
 </details>
 
 <div align="center"><h4>Thank you for your attention 🙏</h4></div>
