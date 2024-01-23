@@ -214,9 +214,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     <h2><code>[Click to show]</code>  the path I followed / and more info </h2>
   </summary>
 <h3>
-  1.I asked to chatgpt to make my game screen page<br />
+  <br />
+  1.I asked to chatgpt to make my game screen page
 
-  2.I explained the mechanics
+  2.I explained the rules
 
   3.I explained the cells, colors and wanted to follow mechanics
 
