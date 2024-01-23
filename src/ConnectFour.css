@@ -2,8 +2,8 @@
    h2{
     padding: 10;
     scale: 2;
-
    }
+
 .allboard{
     box-shadow: 5px 5px 52px 10px grey;
 
@@ -21,7 +21,10 @@
     
     
   }
- 
+  
+ p{
+    margin-bottom: 50px;
+ }
 
  
 a {
@@ -45,3 +48,86 @@ input{
 label{
     margin: 10px;
 }
+
+body {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: rgb(203, 203, 203);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 50%; /* Add this line to make the squares circular */
+    margin: 3px;
+    background-color: white;
+  }
+  
+  @keyframes dropPieceAnimation {
+    0% {
+      transform: translateY(-400px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .container {
+    transform: scale(1.375);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .arka{
+    margin-bottom: 10px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 100px 10px grey;
+    background-color: gray;
+    opacity: 0.8;
+    border-radius: 5%;
+  }
+  
+  
+  :root {
+    --board-color: gray;
+    --cell-color: blue;
+  }
+  
+  .arka {
+    background-color: var(--board-color);
+  }
+  
+  
+  
+  .red-cell { animation: dropPieceAnimation 0.5s ease-out;
+    background-color: var(--cell-color-red); /* istediğiniz kırmızı renk */
+    border: 2px solid black;
+  }
+  
+  .yellow-cell { animation: dropPieceAnimation 0.5s ease-out;
+    background-color: var(--cell-color-yellow); /* istediğiniz sarı renk */
+    border: 2px solid black;
+  
+  }
+  
+  
