@@ -157,22 +157,29 @@ const ConnectFour = () => {
     }, 1);
   };
   
-useEffect(() => {
-  if (winner || isTie) {
-    setGameOver(true);
-
-    const playerName = localStorage.getItem("username") || "Player";
-    const gameName = GameName || "Connect Four";
-    const winnerName = winner === "red" ? "Computer" : playerName;
-
-    const gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
-    const newGame = { playerName, gameName, winnerName };
-    gameHistory.push(newGame);
-
-    localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
-  }
-}, [winner, isTie]);
-
+  useEffect(() => {
+    if (winner) {
+      setGameOver(true);
+  
+      const playerName = localStorage.getItem("username") || "Player";
+      const gameName = GameName || "Connect Four";
+      const winnerName = winner === "red" ? playerName : "Computer";
+  
+      const gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
+  
+      // Check if the same game is already in the history
+      const isSameGameInHistory = gameHistory.some(
+        (game) => game.playerName === playerName && game.gameName === gameName
+      );
+  
+      if (!isSameGameInHistory) {
+        const newGame = { playerName, gameName, winnerName };
+        gameHistory.push(newGame);
+        localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
+      }
+    }
+  }, [winner]);
+  
   const renderMessage = () => {
     if (gameOver) {
       return (

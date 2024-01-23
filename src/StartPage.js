@@ -46,7 +46,7 @@ const StartPage = () => {
 
   return (
     <div className="allboard">
-      <h1>StartPage Page</h1>
+      <h1>GameCreation Page</h1>
 
       {/* User Color Input */}
       <label htmlFor="userColor">User Color:</label>
@@ -87,12 +87,12 @@ const StartPage = () => {
       {/* Link to game with onClick event */}
       
       <Link to={username && GameName ? "/ConnectFour" : "/"} onClick={handleStartGame}>
-        Go to game
+        Play game
       </Link>
 
 
       {/* Link to history page */}
-      <Link to="/history">Go to history</Link></div>
+      <Link to="/history">Game list page</Link></div>
   );
 };
 

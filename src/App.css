@@ -30,7 +30,14 @@ h2 {
   background-color: white;
 }
 
-
+@keyframes dropPieceAnimation {
+  0% {
+    transform: translateY(-400px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 
 .container {
@@ -61,11 +68,11 @@ h2 {
 
 
 
-.red-cell {
+.red-cell { animation: dropPieceAnimation 0.5s ease-out;
   background-color: var(--cell-color-red); /* istediğiniz kırmızı renk */
 }
 
-.yellow-cell {
+.yellow-cell { animation: dropPieceAnimation 0.5s ease-out;
   background-color: var(--cell-color-yellow); /* istediğiniz sarı renk */
 }
 
