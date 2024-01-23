@@ -1,5 +1,5 @@
 <div align="center">
-  <img border-radius="%50" width="600" src="public/ubn.jpeg" alt="Spotube Logo">
+  <img border-radius="50%" width="600" src="public/ubn.jpeg" alt="Spotube Logo">
 
 An open source, connect four game<br />
 playing with computer<br />
@@ -38,9 +38,9 @@ By the way i did this game for my education😉
 
 ##### Note - my-first-project - you can change this with your project name.
 
-<div><h2>for more guide ↓</h2></div>
+<div><h2>for more guide ⬇️⬇</h2></div>
 
-
+⬅️
 <details>
 
 
