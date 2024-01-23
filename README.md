@@ -38,10 +38,12 @@ By the way i did this game for my education😉
 
 ##### Note - my-first-project - you can change this with your project name.
 
-<div><h2>for more guide ⬇️⬇</h2></div>
+<div><h2>for more guide ⬇️</h2></div>
 
-⬅️
-<details>
+
+<details><summary>
+    <h2><code>[Click to show]</code>  ⬅️ </h2>
+  </summary>
 
 
 # Reactjs Installation
