@@ -5,7 +5,7 @@ An open source, connect four game<br />
 playing with computer<br />
 best connect four game
 
-By the way i did this game for my education😉
+By the way it's the best game i have ever seen😉
 
 
 ---
