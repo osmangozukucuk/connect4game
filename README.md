@@ -27,7 +27,7 @@ By the way i did this game for my education😉
 ## 📜 ⬇️ Installation guide
 # How to Install - Step by Step Guide
 1. Clone using the following repo link
-   #### `git clone https://github.com/fullstacktutorials/install-reactjs.git my-first-project`
+   #### `git clone https://github.com/osmangozukucuk/connect4game.git my-first-project`
 
 2. Go to the project folder and run npm install
    #### `cd my-first-project`
