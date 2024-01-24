@@ -1,5 +1,5 @@
 <div align="center">
-<img  width="450" height="450" src="[public/ubn.jpeg](https://ih1.redbubble.net/image.1854510302.8473/st,medium,507x507-pad,600x600,f8f8f8.webp)" alt="ubn Logo">
+<img  width="450" height="450" src="https://ih1.redbubble.net/image.1854510302.8473/st,medium,507x507-pad,600x600,f8f8f8.webp" alt="ubn Logo">
 
 An open source, connect four game<br />
 playing with computer<br />
