@@ -206,7 +206,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ├── README.md
 ├── package-lock.json 
 └── package.json
-```
+``` 
 
 
 <details>
@@ -215,29 +215,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   </summary>
 <h3>
   <br />
-  1.I asked to chatgpt to make my game screen page
 
-  2.I explained the rules
+   <h2>Game cretaion</h2>
+   
+       1.State Management: Utilizing React's useState and useEffect hooks, the StartPage component manages and persists user preferences like colors, username, and game name in the local storage.
 
-  3.I explained the cells, colors and wanted to follow mechanics
+       2.Local Storage Persistence: Through useEffect, the component ensures the persistent storage of user choices, allowing preferences to be retained even after a page reload.
 
-  4.I wanted to add some functions like: tie,win,lose and asked to chatgpt to make them
-  
-  5.I worked on it a bit and finished it
-  
-  6.I asked to make transition between pages to chatgpt
-  
-  7.I created my game list page and game creation page
-  
-  8.I started to doing game creation page i used local.storage for the choosing colors and printing the names
-  
-  9.After finishing the game creation page i asked to the chatgpt to do saving win, lose, tie functions to local.storage
-  
-  10.Then started the game list page i used local.storage again
-  
-  11.After completing these pages i started to doing styles and i getted a lot of help from chatgpt
-  
-  12.and finally I wrote this documentation.
+       3.Input Validation: The handleStartGame function implements input validation, ensuring that a username is provided and additional input (game name) is filled out before allowing users to start the game.
+
+       4.Navigation Logic: The component includes navigation options, enabling users to start the game only when a username and game name are provided, and offers a link to the game history page.
+
+   <h2>Game screen</h2>
+                     
+       1.State Management: Utilizing React's useState, the ConnectFour component manages the game state, including the board, current player, winner, tie status, and game-over condition.
+
+       2.Local Storage Styling: The useEffect hook fetches user color preferences from local storage and dynamically applies them to the game board's styling.
+   
+       3.Winning and Tie Logic: The component includes logic to check for a winner and update the game state accordingly. It also checks for a tie condition and sets the isTie state if all cells are filled without a winner.
+
+   <h2>Game list</h2>
+
+       1.State and Navigation Handling: The History component utilizes React's useState and the useNavigate hook for managing state and navigation, respectively.
+   
+       2.Local Storage and Event Listener: The component employs the useEffect hook to listen for changes in local storage and updates the game history accordingly. It also removes the event listener when the component unmounts.
+
+       3.Game History Rendering: The renderGameHistory function dynamically displays the last five games in a table format, showing game number, game name, and winner.
+
+       4.Clear History Button: The component provides a button to clear both the game history in local storage and the displayed history on the page. An alert informs the user of the action.
+
+      Navigation Button: The "Go Back" button uses the useNavigate hook to navigate back to the home page ("/").
   </h3>
 </details>
 
